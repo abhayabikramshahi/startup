@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { User } from "lucide-react";
 
 const navItems = [
-  { name: "Panel", path: "/panel", icon: <User className="inline w-5 h-5 mr-2" /> },
+  { name: "Panel", path: "/panel", icon: <User className="w-5 h-5" /> },
   { 
     name: "Dashboard", 
     path: "/dashboard", 
-    icon: <User className="inline w-5 h-5 mr-2" />,
-    gradient: true // custom flag for gradient button
+    icon: <User className="w-5 h-5" />,
+    gradient: true
   },
 ];
 
@@ -22,20 +22,21 @@ function Navbar() {
         </h2>
       </div>
 
-      {/* Nav Items */}
+      {/* Nav Items (Desktop + Mobile) */}
       <div className="flex items-center space-x-4 navitems">
         {navItems.map((item, index) => (
           <Link
             key={index}
             to={item.path}
-            className={`flex items-center gap-2 border rounded-full px-4 py-2 text-white transition
+            className={`flex items-center justify-center gap-2 rounded-full px-4 py-2 text-white transition
               ${item.gradient 
                 ? "bg-gradient-to-r from-[#090621] via-[#240745] to-[#C382CC] border-none" 
-                : "bg-gray-900 border-[#ccc] hover:bg-gray-800"
+                : "bg-gray-900 border border-[#ccc] hover:bg-gray-800"
               }`}
           >
             {item.icon}
-            {item.name}
+            {/* Show text only on md and above */}
+            <span className="hidden md:inline">{item.name}</span>
           </Link>
         ))}
       </div>

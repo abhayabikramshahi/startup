@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import Fotter from './components/Fotter'
 import './App.css'
 import { Analytics } from '@vercel/analytics/react'
+import PageNotFound from './pages/PageNotFound'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+           <Route path="*" element={<PageNotFound />} />
 
         </Routes>
         <Fotter />

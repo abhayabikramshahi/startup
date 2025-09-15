@@ -3,35 +3,39 @@ import { Link } from "react-router-dom";
 import { User } from "lucide-react";
 
 const navItems = [
-  { name: "Panel", path: "/panel", icon: <User className="w-5 h-5" /> },
+  { name: "Panel", path: "/panel", icon: <User className="w-5 h-5 text-white" /> },
   { 
     name: "Dashboard", 
     path: "/dashboard", 
-    icon: <User className="w-5 h-5" />,
+    icon: <User className="w-5 h-5 text-white" />,
     gradient: true
   },
 ];
 
 function Navbar() {
   return (
-    <nav className="px-6 py-4 flex justify-between items-center bg-transparent">
+    <nav className="px-6 py-4 flex justify-between items-center bg-black shadow-md">
       {/* Logo */}
       <div className="logo">
-        <h2 className="text-5xl font-extrabold bg-gradient-to-r from-[#090621] via-[#240745] via-[#3A0763] to-[#C382CC] bg-clip-text text-transparent">
+        <Link
+         to={'/'}
+        >
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white">
           AXZone
         </h2>
+        </Link>
       </div>
 
-      {/* Nav Items (Desktop + Mobile) */}
-      <div className="flex items-center space-x-4 navitems">
+      {/* Nav Items */}
+      <div className="flex items-center space-x-3 md:space-x-4 navitems">
         {navItems.map((item, index) => (
           <Link
             key={index}
             to={item.path}
-            className={`flex items-center justify-center gap-2 rounded-full px-4 py-2 text-white transition
+            className={`flex items-center justify-center gap-2 rounded-full px-4 py-2 text-white font-semibold transition
               ${item.gradient 
-                ? "bg-gradient-to-r from-[#090621] via-[#240745] to-[#C382CC] border-none" 
-                : "bg-gray-900 border border-[#ccc] hover:bg-gray-800"
+                ? "bg-gradient-to-r from-[#090621] via-[#240745] to-[#C382CC] hover:opacity-90" 
+                : "bg-gray-800 border border-gray-700 hover:bg-gray-700"
               }`}
           >
             {item.icon}

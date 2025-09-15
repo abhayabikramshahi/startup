@@ -1,0 +1,25 @@
+/* index.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  height: 100vh;
+  background: linear-gradient(-45deg, #090621, #240745, #3A0763);
+  background-size: 600% 600%; /* makes animation smooth */
+  animation: gradientMove 20s ease infinite;
+  color: white;
+}
+
+/* Animation keyframes */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

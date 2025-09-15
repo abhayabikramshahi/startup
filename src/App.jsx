@@ -1,27 +1,44 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import Navbar from './components/Navbar'
-import Fotter from './components/Fotter'
-import './App.css'
-import { Analytics } from '@vercel/analytics/react'
-import PageNotFound from './pages/PageNotFound'
+import React from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import Home from './pages/Home';
+import Navbar from './components/Navbar';
+import Fotter from './components/Fotter';
+import PageNotFound from './pages/PageNotFound';
+import Dashboard from './pages/Dashboard';
+import './App.css';
+import { Analytics } from '@vercel/analytics/react';
+import Products from './pages/Products';
+
+// Layout wrapper to conditionally show navbar/footer
+function Layout({ children }) {
+  const location = useLocation();
+
+  // Hide navbar/footer on dashboard route
+  const hideLayout = location.pathname === '/dashboard';
+
+  return (
+    <>
+      {!hideLayout && <Navbar />}
+      {children}
+      {!hideLayout && <Fotter />}
+    </>
+  );
+}
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Navbar />
+    <BrowserRouter>
+      <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-           <Route path="*" element={<PageNotFound />} />
-
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="*" element={<PageNotFound />} />
+           <Route path="/products" element={<Products />} />
         </Routes>
-        <Fotter />
-      </BrowserRouter>
+      </Layout>
       <Analytics />
-    </>
-  )
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

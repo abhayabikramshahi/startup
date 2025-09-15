@@ -1,26 +1,19 @@
 {
-  "version": 2,
+  "version": 3,
   "builds": [
     {
-      "src": "build.sh",
+      "src": "package.json",
       "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
+      "config": { "distDir": "build" }
     }
   ],
   "routes": [
     {
-      "src": "/assets/(.*)",
-      "headers": { "cache-control": "max-age=31536000, immutable" },
-      "continue": true
-    },
-    {
       "handle": "filesystem"
     },
     {
-      "src": "/(.*)",
+      "src": "/.*",
       "dest": "/index.html"
     }
   ]
-} 
+}

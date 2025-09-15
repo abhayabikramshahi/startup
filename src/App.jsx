@@ -6,18 +6,22 @@ import Product from './pages/Products'
 import Navbar from './components/Navbar'
 import Fotter from './components/Fotter'
 import './App.css'
+import { Analytics } from '@vercel/analytics/react'
 
 function App() {
   return (
-    <BrowserRouter>
-    <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/products" element={<Product />} />
-      </Routes>
-      <Fotter />
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/products" element={<Product />} />
+        </Routes>
+        <Fotter />
+      </BrowserRouter>
+      <Analytics />
+    </>
   )
 }
 

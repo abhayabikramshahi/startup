@@ -9,13 +9,14 @@ import './App.css';
 import { Analytics } from '@vercel/analytics/react';
 import Products from './pages/Products';
 import About from './pages/About';
+import Panel from './pages/Panel'
 
 // Layout wrapper to conditionally show navbar/footer
 function Layout({ children }) {
   const location = useLocation();
 
   // Hide navbar/footer on dashboard route
-  const hideLayout = location.pathname === '/dashboard';
+  const hideLayout = location.pathname == '/dashboard' || location.pathname === '/panel' ;
 
   return (
     <>
@@ -36,6 +37,7 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
            <Route path="/products" element={<Products />} />
             <Route path="/about" element={<About />} />
+            <Route path="/panel" element={<Panel />} />
         </Routes>
       </Layout>
       <Analytics />

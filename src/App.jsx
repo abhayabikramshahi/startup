@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import './App.css';
 import { Analytics } from '@vercel/analytics/react';
 import Products from './pages/Products';
+import About from './pages/About';
 
 // Layout wrapper to conditionally show navbar/footer
 function Layout({ children }) {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<PageNotFound />} />
            <Route path="/products" element={<Products />} />
+            <Route path="/about" element={<About />} />
         </Routes>
       </Layout>
       <Analytics />

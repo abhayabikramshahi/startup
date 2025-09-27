@@ -4,12 +4,11 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Fotter from './components/Fotter';
 import PageNotFound from './pages/PageNotFound';
-import Dashboard from './pages/Dashboard';
 import './App.css';
 import { Analytics } from '@vercel/analytics/react';
 import Products from './pages/Products';
 import About from './pages/About';
-import Panel from './pages/Panel'
+
 
 // Layout wrapper to conditionally show navbar/footer
 function Layout({ children }) {
@@ -33,11 +32,9 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<PageNotFound />} />
            <Route path="/products" element={<Products />} />
             <Route path="/about" element={<About />} />
-            <Route path="/panel" element={<Panel />} />
         </Routes>
       </Layout>
       <Analytics />

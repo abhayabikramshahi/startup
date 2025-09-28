@@ -41,9 +41,9 @@ function Home() {
       </section>
 
       {/* Product Section */}
-      <section className="w-full relative z-10 mt-20 pb-20">
-        <Product />
-      </section>
+   <section className="text-left flex">
+     <Product />
+   </section>
     </div>
   );
 }

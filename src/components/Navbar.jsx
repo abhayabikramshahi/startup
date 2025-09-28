@@ -1,15 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { User } from "lucide-react";
+import { User, ArrowUpFromLine   } from "lucide-react";
 
 const navItems = [
-  { name: "Panel", path: "/panel", icon: <User className="w-5 h-5 text-white" /> },
-  { 
-    name: "Dashboard", 
-    path: "/dashboard", 
-    icon: <User className="w-5 h-5 text-white" />,
-    gradient: true
-  },
+  { name: "Profile", path: "/profile", icon: <User className="w-5 h-5 text-white" /> },
+  { name: "Upload", path: "/upload", icon: <ArrowUpFromLine className="w-5 h-5 text-white" /> },
 ];
 
 function Navbar() {
@@ -21,7 +16,7 @@ function Navbar() {
          to={'/'}
         >
           <h2 className="text-3xl md:text-4xl font-extrabold text-white">
-          AXZone
+          AZONE
         </h2>
         </Link>
       </div>

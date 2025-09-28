@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { User, ArrowUpFromLine   } from "lucide-react";
+import Logo from "../assets/logo.png";
 
 const navItems = [
   { name: "Profile", path: "/profile", icon: <User className="w-5 h-5 text-white" /> },
@@ -15,9 +16,7 @@ function Navbar() {
         <Link
          to={'/'}
         >
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white">
-          AZONE
-        </h2>
+         <img src={Logo} className="h-20" alt="" />
         </Link>
       </div>
 

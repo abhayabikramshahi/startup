@@ -15,22 +15,23 @@ import Payment from './pages/Payment';
 import About from './pages/About';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import CookiePopup from './hooks/PopUp'; // 👈 added popup
 
 const stripePromise = loadStripe('pk_test_51SBbNXAZFH4vqn4pD6g0bLcr8FhXkkS0ZbJW2oqk2XDLnHwIX2UliW3S5NcVv2NZcGa3jrngLCRMfc3gAkzcBpa700dPRXMefY');
-
 
 // Layout wrapper to conditionally show navbar/footer
 function Layout({ children }) {
   const location = useLocation();
 
-  // Hide navbar/footer on dashboard route
-  const hideLayout = location.pathname == '/dashboard' || location.pathname === '/panel' ;
+  // Hide navbar/footer on dashboard & panel routes
+  const hideLayout = location.pathname === '/dashboard' || location.pathname === '/panel';
 
   return (
     <>
       {!hideLayout && <Navbar />}
       {children}
       {!hideLayout && <Fotter />}
+      <CookiePopup /> {/* 🔥 Cookie popup always injected */}
     </>
   );
 }

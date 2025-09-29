@@ -7,7 +7,7 @@ function Home() {
       <section className="relative z-10 flex flex-col items-center justify-center max-w-3xl space-y-6 py-32">
         {/* Headline */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
-          Welcome to <span className="text-purple-600">AXZone</span>
+          Welcome to <span className="text-gray-800">A Zone</span>
         </h1>
 
         {/* Subtext */}

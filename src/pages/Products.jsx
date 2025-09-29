@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // <-- ADD THIS
-import Cookie from '../assets/cookie.png';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Cookie from "../assets/cookie.png";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -10,24 +10,22 @@ function Products() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        // Simulated products
         const dummyProducts = [
           {
             id: 1,
-            name: 'cookie stealer',
-            description: 'High quality Software boom.',
-            price: '$0.90',
+            name: "Cookie Stealer",
+            description: "High-quality software for your digital needs.",
+            price: "$0.90",
             image: Cookie,
-            path: '/product/cookie-stealer',
+            path: "/product/cookie-stealer",
           },
         ];
-        // Simulate network delay
         setTimeout(() => {
           setProducts(dummyProducts);
           setLoading(false);
-        }, 1500); // 1.5 seconds
+        }, 1500);
       } catch (error) {
-        console.error('Failed to fetch products:', error);
+        console.error("Failed to fetch products:", error);
         setProducts([]);
         setLoading(false);
       }
@@ -37,54 +35,62 @@ function Products() {
   }, []);
 
   const SkeletonCard = () => (
-    <div className="border border-[#1b1b1b] rounded-lg p-4 animate-pulse bg-gray-800 h-80">
-      <div className="w-full h-48 bg-gray-700 rounded-md mb-4"></div>
-      <div className="h-6 bg-gray-700 rounded mb-2"></div>
-      <div className="h-4 bg-gray-700 rounded mb-2"></div>
-      <div className="h-5 w-1/3 bg-gray-700 rounded mt-2"></div>
+    <div className="border border-gray-200 rounded-xl p-4 animate-pulse bg-gray-100 h-80 shadow-md">
+      <div className="w-full h-44 bg-gray-200 rounded-md mb-4"></div>
+      <div className="h-6 bg-gray-200 rounded mb-3"></div>
+      <div className="h-4 bg-gray-200 rounded mb-2"></div>
+      <div className="h-5 w-1/4 bg-gray-200 rounded mt-3"></div>
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-16 relative">
-      <h2 className="text-3xl font-bold mb-6">Our Products</h2>
+    <div className="min-h-screen bg-white text-gray-900 px-6 py-20">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-4xl font-extrabold mb-12 text-center tracking-tight text-gray-900">
+          Our Products
+        </h2>
 
-      {loading ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <SkeletonCard />
-          <SkeletonCard />
-          <SkeletonCard />
-        </div>
-      ) : products.length === 0 ? (
-        <p className="text-gray-400 text-xl">No products available at the moment.</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="border border-[#1b1b1b] rounded-lg p-4 text-white shadow-md transform transition hover:scale-105"
-            >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-48 object-cover rounded-md mb-4"
-              />
-              <h3 className="text-xl font-semibold">{product.name}</h3>
-              <p className="text-gray-300">{product.description}</p>
-              <p className="mt-2 font-bold">{product.price}</p>
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
+          </div>
+        ) : products.length === 0 ? (
+          <p className="text-gray-500 text-lg text-center">
+            No products available at the moment.
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {products.map((product) => (
+              <div
+                key={product.id}
+                className="border border-gray-300 rounded-xl p-6 bg-white shadow hover:shadow-lg hover:border-purple-300 transition duration-300"
+              >
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-44 object-cover rounded-lg mb-5"
+                />
+                <h3 className="text-2xl font-bold mb-2 text-gray-900">{product.name}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-3">
+                  {product.description}
+                </p>
+                <p className="text-lg font-semibold text-gray-600 mb-4">
+                  {product.price}
+                </p>
 
-              <div className="mt-4 flex gap-2">
                 <button
                   onClick={product.path ? () => navigate(product.path) : null}
-                  className="bg-white rounded-full cursor-pointer hover:text-gray-700 text-black px-4 py-2 transition"
+                  className="w-full bg-[#1b1b1b] text-white font-medium rounded-lg px-4 py-2 hover:bg-black curosr-pointer transition"
                 >
                   Buy Now
                 </button>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

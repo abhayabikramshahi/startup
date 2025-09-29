@@ -1,42 +1,47 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { User, ArrowUpFromLine   } from "lucide-react";
-import Logo from "../assets/logo.png";
+import { Link, useLocation } from "react-router-dom";
 
 const navItems = [
-  { name: "Profile", path: "/profile", icon: <User className="w-5 h-5 text-white" /> },
-  { name: "Upload", path: "/upload", icon: <ArrowUpFromLine className="w-5 h-5 text-white" /> },
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Product", path: "/products" },
+  { name: "Developer", path: "/developer" },
 ];
 
 function Navbar() {
+  const location = useLocation();
+
   return (
-    <nav className="px-6 py-4 flex justify-between items-center bg-black shadow-md">
+    <nav className="px-8 py-4 flex justify-between items-center bg-white shadow-sm sticky top-0 z-50">
       {/* Logo */}
       <div className="logo">
-        <Link
-         to={'/'}
-        >
-         <img src={Logo} className="h-20" alt="" />
+        <Link to={"/"}>
+          <h1 className="font-bold text-xl text-gray-900 tracking-wide hover:text-gray-700 transition">
+            A Zone
+          </h1>
         </Link>
       </div>
 
-      {/* Nav Items */}
-      <div className="flex items-center space-x-3 md:space-x-4 navitems">
-        {navItems.map((item, index) => (
-          <Link
-            key={index}
-            to={item.path}
-            className={`flex items-center justify-center gap-2 rounded-full px-4 py-2 text-white font-semibold transition
-              ${item.gradient 
-                ? "bg-gradient-to-r from-[#090621] via-[#240745] to-[#C382CC] hover:opacity-90" 
-                : "bg-gray-800 border border-gray-700 hover:bg-gray-700"
+      {/* Nav Links */}
+      <div className="flex items-center space-x-8 navitems">
+        {navItems.map((item, index) => {
+          const isActive = location.pathname === item.path;
+          return (
+            <Link
+              key={index}
+              to={item.path}
+              className={`relative text-base font-medium transition-colors duration-300 ${
+                isActive ? "text-blue-600" : "text-gray-700 hover:text-blue-600"
               }`}
-          >
-            {item.icon}
-            {/* Show text only on md and above */}
-            <span className="hidden md:inline">{item.name}</span>
-          </Link>
-        ))}
+            >
+              {item.name}
+              {/* Active underline */}
+              {isActive && (
+                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-blue-600 rounded"></span>
+              )}
+            </Link>
+          );
+        })}
       </div>
     </nav>
   );

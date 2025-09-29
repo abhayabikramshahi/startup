@@ -5,10 +5,8 @@ body {
   padding: 0;
   font-family: sans-serif;
   height: 100vh;
-  background: linear-gradient(-45deg, black);
-  background-size: 600% 600%; /* makes animation smooth */
-  animation: gradientMove 20s ease infinite;
-  color: white;
+  background: white;
+  color: black;
 }
 
 /* Animation keyframes */

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Cookie from "../assets/cookie.png";
+import Dos from "../assets/dos.png";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { CheckCircle } from "lucide-react";
 
-function ProductCookie() {
+function ProductDos() {
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
@@ -50,8 +50,8 @@ function ProductCookie() {
   };
 
   const features = [
-    "View all browser cookies effortlessly",
-    "No hidden tracking — total privacy",
+    "Open Source",
+    "Fast",
     "Premium software experience",
   ];
 
@@ -61,16 +61,15 @@ function ProductCookie() {
         {/* Product Showcase */}
         <div className="flex flex-col items-center lg:items-start">
           <img
-            src={Cookie}
-            alt="Cookie Stealer"
+            src={Dos}
+            alt="Dos Source Code"
             className="w-full max-w-md rounded-2xl shadow-xl mb-6"
           />
           <h1 className="text-5xl font-extrabold tracking-tight mb-4">
-            Cookie Stealer
+            Dos Source Code ( iLLEGAL )
           </h1>
           <p className="text-lg text-gray-700 mb-8 leading-relaxed max-w-md">
-            A clean, GUI-based software for managing and extracting cookies
-            securely. Built with simplicity and elegance in mind.
+           A professional and user expolit src code for you 🫵
           </p>
 
           {/* Payment Form */}
@@ -95,7 +94,7 @@ function ProductCookie() {
 
         {/* Features Section */}
         <section className="lg:pl-8">
-          <h2 className="text-3xl font-bold mb-6">Why Choose Cookie Stealer?</h2>
+          <h2 className="text-3xl font-bold mb-6">Why Choose DOS SRC CODE?</h2>
           <ul className="space-y-5">
             {features.map((feat, i) => (
               <li key={i} className="flex items-center gap-3 text-lg">
@@ -113,10 +112,10 @@ function ProductCookie() {
       {/* Call to Action */}
       <section className="mt-24 text-center">
         <h3 className="text-2xl font-bold mb-4">
-          Ready to take control of your cookies?
+          Ready to take control of websites?
         </h3>
         <p className="text-gray-600 mb-6">
-          Start managing your browser data in a few clicks.
+          Start managing your web data in a few codes.
         </p>
         <button
           onClick={makePayment}
@@ -129,4 +128,4 @@ function ProductCookie() {
   );
 }
 
-export default ProductCookie;
+export default ProductDos;

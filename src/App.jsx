@@ -16,6 +16,8 @@ import About from './pages/About';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CookiePopup from './hooks/PopUp'; // 👈 added popup
+import Developer from './pages/Developer';
+import Dos from './Products/Dos';
 
 const stripePromise = loadStripe('pk_test_51SBbNXAZFH4vqn4pD6g0bLcr8FhXkkS0ZbJW2oqk2XDLnHwIX2UliW3S5NcVv2NZcGa3jrngLCRMfc3gAkzcBpa700dPRXMefY');
 
@@ -50,6 +52,8 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/product/cookie-stealer" element={<ProductDetail />} />
             <Route path="/payment" element={<Payment />} />
+            <Route path="/developer" element={<Developer />} />
+            <Route path="/product/dos-attack-tool" element={<Dos />} />
           </Routes>
         </Layout>
         <Analytics />
